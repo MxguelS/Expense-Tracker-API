@@ -15,3 +15,26 @@ model User {
   createAt DateTime @default(now())
   expenses  Expense[]
 }
+
+model Expense{
+    id          Int      @id @default(autoincrement())
+    amount      Decimal  @db.Decimal(10, 2)
+    category    category
+    description String?
+    date        DateTime @default(now())
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    userId      Int
+    user        User     @relation(fields: [userId], references: [id],onDelete: Cascade)
+}
+
+enum category {
+  comestibles
+  Ocio
+  Eletronica
+  utilidades
+  ropa
+  salud
+  otros
+}
+
