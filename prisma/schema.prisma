@@ -8,33 +8,32 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
   password  String
-  createAt DateTime @default(now())
+  createdAt DateTime  @default(now())
   expenses  Expense[]
 }
 
-model Expense{
-    id          Int      @id @default(autoincrement())
-    amount      Decimal  @db.Decimal(10, 2)
-    category    category
-    description String?
-    date        DateTime @default(now())
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    userId      Int
-    user        User     @relation(fields: [userId], references: [id],onDelete: Cascade)
+model Expense {
+  id          Int      @id @default(autoincrement())
+  amount      Decimal  @db.Decimal(10, 2)
+  category    Category
+  description String?
+  date        DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-enum category {
-  comestibles
+enum Category {
+  Comestibles
   Ocio
-  Eletronica
-  utilidades
-  ropa
-  salud
-  otros
+  Electronica
+  Utilidades
+  Ropa
+  Salud
+  Otros
 }
 

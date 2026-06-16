@@ -3,9 +3,9 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const authRoutes = require('./routes/auth');
-const expenseRoutes = require('./routes/expenses');
-const errorMiddleware = require('./middleware/errorMiddleware');
+const authRoutes = require('./routes/auth.routes');
+const expenseRoutes = require('./routes/expense.routes');
+const errorMiddleware = require('./middleware/error.middleware');
 
 const app = express();
 

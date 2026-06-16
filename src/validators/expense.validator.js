@@ -1,16 +1,16 @@
 
 const {z} = require('zod');
 
-const Valid_categories = ['Comestibles', 'Ocio',
+const validCategories = ['Comestibles', 'Ocio',
     'Electronica', 'Utilidades', 'Ropa', 'Salud', 'Otros'
 ]
-const Valid_filtres = ['last_week','last_month',
+const validFilters = ['last_week','last_month',
     'last_3_months','custom'
 ]
 
 const createExpenseSchema = z.object({
     amount: z.number().positive('El monto debe ser un número positivo'),
-    category: z.enum(valid_categories, { message: 'Categoría inválida' }),
+    category: z.enum(validCategories, { message: 'Categoría inválida' }),
     description: z.string().optional(),
     date: z.string().datetime().optional(),
     })
@@ -18,7 +18,7 @@ const createExpenseSchema = z.object({
 const updateExpenseSchema = createExpenseSchema.partial();
 
 const filterExpenseSchema = z.object({
-    filter: z.enum(valid_filtres).optional(),
+    filter: z.enum(validFilters).optional(),
     startDate: z.string().datetime().optional(),
     endDate: z.string().datetime().optional(),
 }).refine(
