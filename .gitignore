@@ -1,0 +1,8 @@
+#documentos 
+docs
+specs
+.env
+#logs
+logs
+#modules
+node_modules
