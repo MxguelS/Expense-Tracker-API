@@ -134,3 +134,5 @@ prisma/
 ```
 
 Flujo de request: `Ruta → Middleware (JWT) → Validador (Zod) → Controlador → Servicio → Prisma → PostgreSQL`
+
+Inspirado de : https://roadmap.sh/projects/expense-tracker-api
